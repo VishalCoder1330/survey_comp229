@@ -1,0 +1,142 @@
+<!-- Team: Group 3
+  Web site name : Survey+
+  Date : March 18, 2022
+  Author's names & Student IDs:
+    Jiaying Song - 301172953
+    Nimish Patel - 301224017
+    Vishalkumar Parekh - 301221947
+    Deepkumar Patel - 301236607
+    Gokulraj Venugopal – 301202722
+    Dimple - 301225341
+ -->
+  <link rel="icon" href="../public/Assets/images/logo.png" type="image/x-icon"> 
+
+  <%- include ('../partials/header.ejs') %>
+
+  <%- include ('../partials/main_nav.ejs') %>
+
+<style>
+ #font{
+      color: #2E8BC0  ;
+      font-family: Arial, Helvetica, sans-serif;
+
+    }
+     #font2{
+     color: #05445E  ;
+    
+    }
+  
+</style>
+
+<!-- Content for the Add page -->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-10">
+            <h1 class id="font">Create Questions</h1> 
+            <form class="form" method="POST">
+                <div class="table-responsive">
+                <table class="table table-primary table-sm table-bordered table-striped table-hover  ">
+                <tr>
+                   <th class="text-center col-1"class id ="font2">Number</th>
+                    <th class="text-center col-9"class id ="font2">Question</th>
+                    <th class="text-center col-7"class id ="font2">Question Type</th>
+                     <th class="text-center col-3"class id ="font2">Clear</th>
+
+                </tr>
+                </tr>
+                <td class="text-center col-1" class id ="font2" >1</td>  
+               <td>  
+                <div class="form-group" id="question" class id ="font2"> 
+                    <input type="text" class="form-control"
+                    id="nameTextField"
+                    placeholder="Enter a question"
+                    name="question"
+                    required>
+                </div></form>
+               <td>
+           
+               <input class="form-check-input" type="radio" name="questionType" id="SA" value="SA" checked  >
+                    <label class="form-check-label" for="question" class id ="font2">
+                        Short Answer
+                    </label>
+                    </div>
+                    <div class="form-check">
+                    <input class="form-check-input" type="radio" name="questionType" id="TF" value="TF" >
+                    <label class="form-check-label" for="question" class id ="font2">
+                        True/False
+                    </label>
+                 </div> 
+              
+
+                    <td>  <button class="btn btn-danger btn-sm" type="reset" value="Reset">  
+                    <i class="fas fa-backspace"></i> Clear</button></td>
+           
+                   
+                </tr>
+             
+                </tr> 
+                    <br><br> <br>
+        
+                 
+                        </tr>
+               </table>
+               <!-- <a  href="/survey-view" > <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> Generate Survey</button> </a>  -->
+                  <a  href="/survey-view" ><button class="btn btn-success" type="submit">
+                   <i class="fas fa-plus-square"></i> Add</button> </a>
+                    <a href="/survey-list" class="btn btn-warning">
+                        <i class="fas fa-undo"></i> Cancel</a>
+                 </div>
+
+             </form>
+                  
+        </div>
+
+    </div>
+</div>
+
+<!-- make sure create a new row not the entire table --> 
+<%
+function generate_table() { 
+ 
+  var body = document.getElementsById("question")[0];
+
+ 
+  var tbl = document.createElement("table");
+  var tblBody = document.createElement("tbody");
+
+ 
+  for (var i = 0; i < 2; i++) {
+    // creates a table row
+    var row = document.createElement("tr");
+
+    for (var j = 0; j < 2; j++) {
+      // Create a <td> element and a text node, make the text
+      // node the contents of the <td>, and put the <td> at
+      // the end of the table row
+      var cell = document.createElement("td");
+      var cellText = document.createTextNode("cell in row "+i+", column "+j);
+      cell.appendChild(cellText);
+      row.appendChild(cell);
+    }
+
+
+    tblBody.appendChild(row);
+  }
+
+  
+  tbl.appendChild(tblBody);
+
+  body.appendChild(tbl);
+ 
+  tbl.setAttribute("border", "2");
+}
+%>
+
+
+<%- include ('../partials/bottom_nav.ejs') %>  
+
+<%- include ('../partials/footer.ejs') %>
+  
+
+  

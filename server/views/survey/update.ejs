@@ -1,0 +1,104 @@
+<!-- Team: Group 3
+  Web site name : Survey+
+  Date : March 18, 2022
+  Author's names & Student IDs:
+    Jiaying Song - 301172953
+    Nimish Patel - 301224017
+    Vishalkumar Parekh - 301221947
+    Deepkumar Patel - 301236607
+    Gokulraj Venugopal – 301202722
+    Dimple - 301225341
+ -->
+<link rel="icon" href="../public/Assets/images/logo.png" type="image/x-icon"> 
+<%- include ('../partials/header.ejs') %>
+
+<%- include ('../partials/main_nav.ejs') %>
+
+<style>
+ #font{
+      color: #2E8BC0  ;
+      font-family: Arial, Helvetica, sans-serif;
+
+    }
+     #font2{
+     color: #05445E  ;
+    
+    }
+  
+</style>
+
+<!-- Content for the Add page -->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-10">
+  
+             <h1 class id="font"><%= title %></h1>
+            <form class="form" method="POST">
+                <div class="table-responsive">
+                <table class="table table-primary table-sm table-bordered table-striped table-hover  ">
+                <tr>
+                   <th class="text-center col-1" class id ="font2">Number</th>
+                    <th class="text-center col-9" class id ="font2">Question</th>
+                    <th class="text-center col-7" class id ="font2">Question Type</th>
+                     <th class="text-center col-3" class id ="font2">Clear</th>
+
+                </tr>
+                </tr>
+                <td class="text-center col-1" >1</td>  
+               <td>  
+                <div class="form-group">
+                    <input type="text" class="form-control"
+                    id="nameTextField"
+                    placeholder="Enter a question"
+                    value="<%= questions.question  %>"
+                    name="question"
+                    required>
+                </div></form>
+              <!-- <td>
+                   <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question" id="SA" value="SA" checked >
+                    <label class="form-check-label" for="question">
+                        Short Answer
+                    </label>
+                    </div>
+                    <div class="form-check">
+                    <input class="form-check-input" type="radio" name="question" id="TF" value="TF" >
+                    <label class="form-check-label" for="question">
+                        True/False
+                    </label>
+                    </div>
+                    <td> <a href="/survey-view/delete/"> <button class="btn btn-danger btn-sm">  
+                    <i class="fas fa-trash-alt"></i> Clear</button></td></a>
+             
+                </tr>
+                <td class="text-center col-1" >2</td>  
+               <td>  
+                <div class="form-group">
+                 
+                  -->
+                    <br><br> <br>
+        
+                 
+                        </tr>
+               </table>
+                <a  href="/survey-view" > <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> Generate Survey</button> </a> 
+                
+                    <a href="/survey-list" class="btn btn-warning">
+                        <i class="fas fa-undo"></i> Cancel</a>
+                 </div>
+
+             </form>
+                  
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<%- include ('../partials/bottom_nav.ejs') %>  
+
+<%- include ('../partials/footer.ejs') %>
+  

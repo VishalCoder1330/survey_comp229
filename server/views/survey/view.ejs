@@ -1,0 +1,118 @@
+<!--   Team: Group 3
+  Web site name : Survey+
+  Date : March 18, 2022
+  Author's names & Student IDs:
+    Jiaying Song - 301172953
+    Nimish Patel - 301224017
+    Vishalkumar Parekh - 301221947
+    Deepkumar Patel - 301236607
+    Gokulraj Venugopal – 301202722
+    Dimple - 301225341
+
+  -->
+
+  <link rel="icon" href="../public/Assets/images/logo.png" type="image/x-icon"> 
+<%- include ('../partials/header.ejs') %>
+
+<%- include ('../partials/main_nav.ejs') %>
+
+
+<!-- view survey should have submit button--> 
+<style>
+ #font{
+      color: #2E8BC0  ;
+      font-family: Arial, Helvetica, sans-serif;
+
+    }
+     #font2{
+     color: #05445E  ;
+    
+    }
+  
+</style>
+<!-- Main Content -->
+
+
+<link rel="icon" type="image/png"  href="/public/Assets/images/logo.png" alt="logo" width="150" height="80">
+
+  <main class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-10">
+            <h1 class id="font">Survey</h1>
+                 <img src="../public/Assets/images/pattern.png" alt="Pandora" width="1076" height="50" >
+            
+
+            <br>
+            <br>
+            <div class="table-responsive">
+            <table class="table table-primary table-sm table-bordered table-striped table-hover ">
+                <!-- Header Row-->
+                <tr>
+                    <th class="text-center col-1" class id ="font2">Question</th>
+                    <th class="text-center col-1" class id ="font2">Answer</th>
+                  
+                  
+                   
+                 
+
+                </tr>
+
+
+            
+                 
+                   <% for(let count = 0; count <QuestionsList.length; count++) { %>
+                    <tr>
+                        <td class="text-center col-2" class id ="font2"><%= QuestionsList[count].question %>
+
+                        <br>
+                         
+                        <a href="/survey-view/delete/<%= QuestionsList[count]._id %>" class="btn btn-danger btn-sm"> 
+                        <i class="fas fa-trash-alt"></i> Delete</a>
+                        
+                        <a  href="/survey-view/update/<%= QuestionsList[count]._id %>"class="btn btn-secondary btn-sm">
+                        <i class="fas fa-minus"></i> Edit Questions</a> 
+                        
+                         <a  href="/survey-view/create/<%= QuestionsList[count]._id %>"><button class="btn btn-success" type="submit">
+                           <i class="fas fa-plus-square"></i> Add More Questions</button> </a>
+                         </td>
+                         <td class="text-center col-1">
+
+                         <form class="form" method="POST">
+                         <div class="form-group">
+                         <input type="text" class="form-group"
+                              id="nameATextField"
+                              placeholder="Enter your answer here"
+                              name="questionsAnswer" required></div>
+                          </form> 
+                        
+                          </tr>
+                        <% } %>
+                         
+                    
+
+            
+            
+              
+            </table>
+            </div>
+           
+
+                <!-- /survey-list -->
+                 <a href="/" > <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> Submit</button> </a> 
+                    
+                    <!--
+                    <a href="/survey-list" class="btn btn-warning">
+                        <i class="fas fa-undo"></i> Cancel</a> -->
+        </div>
+    </div>
+
+  </main>
+  <br><br>
+  
+
+
+<%- include ('../partials/bottom_nav.ejs') %>  
+
+<%- include ('../partials/footer.ejs') %>
+  

@@ -1,0 +1,100 @@
+<!-- Team: Group 3
+  Web site name : Survey+
+  Date : March 18, 2022
+  Author's names & Student IDs:
+    Jiaying Song - 301172953
+    Nimish Patel - 301224017
+    Vishalkumar Parekh - 301221947
+    Deepkumar Patel - 301236607
+    Gokulraj Venugopal – 301202722
+    Dimple - 301225341
+ -->
+
+  <link rel="icon" href="../public/Assets/images/logo.png" type="image/x-icon"> 
+  <%- include ('../partials/header.ejs') %>
+
+  <%- include ('../partials/main_nav.ejs') %>
+  
+<!-- list contacts view -->
+
+<style>
+ #font{
+      color: #2E8BC0  ;
+      font-family: Arial, Helvetica, sans-serif;
+
+    }
+     #font2{
+     color: #05445E  ;
+    
+    }
+  
+</style>
+  <!-- Main Content -->
+  <main class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-10">
+            <h1 class id="font"><%= title %></h1>
+            
+
+            <br>
+            <br>
+            <div class="table-responsive">
+            <table class="table table-primary table-sm table-bordered table-striped table-hover  ">
+
+
+               <a href="/survey-list/add" > <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit" class id ="font2"></i> Create New Survey</button> </a> 
+                    <br><br>
+                <!-- Header Row-->
+                <tr>
+                  
+                    <th class="text-center col-2" class id ="font2">Survey Name</th>
+                    <th class="text-center col-2" class id ="font2">Author Name</th>
+                    <th class="text-center col-4" class id ="font2">Lifetime</th>
+                    <th class="text-center col-1"></th>
+                    <th class="text-center col-1"></th>
+                    <th class="text-center col-1"></th>
+                    <th class="text-center col-1"></th>
+                   
+                 
+
+                </tr>
+              
+                <!-- Repeatable Template Row  that lists contacts alphabetically -->
+                <% for(let count = 0; count <SurveyList.length; count++) { %>
+                 <%SurveyList.sort((a,b)=> (a.name<b.name)*-1);%> 
+                    <tr>
+                        <td class="text-center col-2" class id ="font2"><%= SurveyList[count].name %> </td>
+                        <td class="text-center col-2" class id ="font2"><%= SurveyList[count].displayName %></td> 
+                        <td class="text-center col-4" class id ="font2"><%= SurveyList[count].endDate%></td>
+                                    <td class="text-center col-1">
+                                    
+                                    <a href="/survey-list/edit/<%= SurveyList[count]._id %>" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-pencil-alt"></i> Update Details</a></td>
+                                    <td class="text-center col-1">
+                                 
+                                    <a href="/survey-list/delete/<%= SurveyList[count]._id %>" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i> Delete</a>
+                                     <td class="text-center col-1">
+                               
+                                     <a href="/survey-view/create/<%= SurveyList[count]._id %>" class="btn btn-info btn-sm">
+                                    <i class="fas fa-plus"></i> Add Questions </a></td> 
+                                     <td class="text-center col-1">
+                                    <a  href="/survey-view"class="btn btn-success btn-sm">
+                                    <i class="fas fa-search"></i> Start Survey</a></td>
+                                    
+                        </td></tr>
+                       
+                <% } %>
+            </table>
+            </div>
+        </div>
+    </div>
+  </main>
+  
+  <%- include ('../partials/bottom_nav.ejs') %>  
+
+  <%- include ('../partials/footer.ejs') %>
+  
+
+

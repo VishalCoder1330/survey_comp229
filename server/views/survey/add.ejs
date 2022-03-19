@@ -1,0 +1,81 @@
+<!-- Team: Group 3
+  Web site name : Survey+
+  Date : March 18, 2022
+  Author's names & Student IDs:
+    Jiaying Song - 301172953
+    Nimish Patel - 301224017
+    Vishalkumar Parekh - 301221947
+    Deepkumar Patel - 301236607
+    Gokulraj Venugopal – 301202722
+    Dimple - 301225341
+ -->
+
+  <link rel="icon" href="../public/Assets/images/logo.png" type="image/x-icon"> 
+  <%- include ('../partials/header.ejs') %>
+
+  <%- include ('../partials/main_nav.ejs') %>
+
+<!-- Content for the Add page -->
+<style>
+ #font{
+      color: #2E8BC0  ;
+      font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+    #font2{
+     color: #05445E  ;
+    
+    }
+  
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1 class id="font"><%= title %></h1>
+
+            <form class="form" method="POST">
+                <div class="form-group">
+                    <label for="nameTextField" class id ="font2">Survey Name</label>
+                    <input type="text" class="form-control"
+                    id="nameTextField"
+                    placeholder="Enter survey name"
+                    name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="numberTextField" class id ="font2">Author Name</label>
+                    <input type="text" class="form-control"
+                    id="numberTextField"
+                    placeholder="Enter first and last name"
+                    name="displayName" required>
+                </div> 
+
+                <div class="form-group">
+                    <label for="emailTextField" class id ="font2">End Date</label>
+                    <input type="date" class="form-control"
+                    id="endDate"
+                    placeholder="Enter the end date of survey" min="<%= minDate %>" value="<%= minDate %>"
+                    name="endDate" required>
+                </div> 
+                <br>
+                
+                 <a href="/survey-list" > <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> Submit</button> </a> 
+                
+                    <a href="/home" class="btn btn-warning">
+                        <i class="fas fa-undo"></i> Cancel</a>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<%- include ('../partials/bottom_nav.ejs') %>  
+
+<%- include ('../partials/footer.ejs') %>
+  
+
+

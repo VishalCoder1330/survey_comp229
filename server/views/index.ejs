@@ -1,0 +1,50 @@
+<!-- Team: Group 3
+  Web site name : Survey+
+  Date : March 18, 2022
+  Author's names & Student IDs:
+    Jiaying Song - 301172953
+    Nimish Patel - 301224017
+    Vishalkumar Parekh - 301221947
+    Deepkumar Patel - 301236607
+    Gokulraj Venugopal – 301202722
+    Dimple  - 301225341
+  -->
+  <%- include ('partials/header.ejs') %> 
+
+  <%- include ('partials/main_nav.ejs') %> 
+
+ <link rel="icon" href="../public/Assets/images/logo.png" type="image/x-icon"> 
+ 
+<!--Main content -->
+<main class="container"> 
+    <div class="jumbotron">
+      <!--<h1 class="display-4">Welcome to the <%= title %> page!</h1> -->
+    </div>
+</main>  
+ <!-- detects which title page is active so displays the correc contetn--> 
+ 
+ <!-- home content-->
+ <% if (title == 'Home') {%> 
+  <%- include ('./content/c_home.ejs') %> <% }%> 
+
+<!-- about content -->
+ <% if (title == 'About') {%> 
+  <%- include ('./content/c_about.ejs') %> <% }%> 
+
+<!-- services content -->
+ <% if (title == 'Services') {%> 
+  <%- include ('content/c_services.ejs') %> <% }%> 
+<!-- services content -->
+
+ <% if (title == 'Contact') {%> 
+  <%- include ('content/c_contact.ejs') %> <% }%> 
+<!-- services content -->
+
+
+<%- include ('./partials/bottom_nav.ejs') %> 
+
+<%- include ('./partials/footer.ejs') %> 
+  
+
+
+
