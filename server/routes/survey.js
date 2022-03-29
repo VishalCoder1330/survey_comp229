@@ -13,6 +13,7 @@
 
 let express = require('express');
 let router = express.Router();
+const authentication = require('../../Authentication/token');
 let mongoose = require('mongoose');
 
 
@@ -25,23 +26,23 @@ router.get('/', surveyController.displaySurvey);
 
 
 /* GET Route for displaying the Add page - CREATE Operation */
-router.get('/add', surveyController.displayAddPage);  
+router.get('/add',authentication ,surveyController.displayAddPage);  
 
 
 /* POST Route for processing the Add page - CREATE Operation */
-router.post('/add',  surveyController.processAddPage);
+router.post('/add', authentication ,surveyController.processAddPage);
     
 
 /* GET Route for displaying the Edit page - UPDATE Operation */
-router.get('/edit/:id',  surveyController.displayEditPage);
+router.get('/edit/:id',  authentication,surveyController.displayEditPage);
      
 
 /* POST Route for processing the Edit page - UPDATE Operation */
-router.post('/edit/:id',  surveyController.processEditPage);
+router.post('/edit/:id',  authentication,surveyController.processEditPage);
        
 
 /* GET Route to perform Deletion - DELETE Operation */
-router.get('/delete/:id', surveyController.performDelete);
+router.get('/delete/:id', authentication,surveyController.performDelete);
 
 
 

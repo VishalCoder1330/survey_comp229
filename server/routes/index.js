@@ -14,6 +14,7 @@
 var express = require('express');
 var router = express.Router();
 let indexController = require('../controllers/index');
+const authentication = require('../../Authentication/token');
 
 
 /* GET home page. */
@@ -26,10 +27,10 @@ router.get('/home', indexController.displayHomePage);
 router.get('/about', indexController.displayAboutPage);
 
 /* GET projects page. */
-router.get('/projects', indexController.displayProjectsPage);
+router.get('/projects', authentication,indexController.displayProjectsPage);
 
 /* GET services page. */
-router.get('/services', indexController.displayServicesPage);
+router.get('/services',indexController.displayServicesPage);
 
 /* GET contact me page. */
 router.get('/contact', indexController.displayContactPage);

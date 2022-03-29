@@ -12,9 +12,17 @@
 
 var express = require('express');
 var router = express.Router();
+let user = require('../controllers/user');
+let autheticate = require('../../Authentication/token')
+
+/* User Register Route */
+router.post('/register',user.registerUser);
+
+/* User Login Router */
+router.post('/login',user.logUser);
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', authentication,function(req, res, next) {
   res.send('Placeholder');
 });
 

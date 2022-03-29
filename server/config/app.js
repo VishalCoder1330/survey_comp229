@@ -16,7 +16,7 @@ let  express = require('express');
 let  path = require('path');
 let  cookieParser = require('cookie-parser');
 let  logger = require('morgan');
-
+let dotenv = require('dotenv');
 
 // modules for authentication
 let session = require('express-session');
@@ -51,7 +51,7 @@ let answerRouter = require('../routes/answer');
 
 
 let  app = express();
-
+dotenv.config();
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
@@ -84,11 +84,11 @@ let userModel = require('../models/user');
 let User = userModel.User;
 
 // implement a User Authentication Strategy
-passport.use(User.createStrategy());
+//passport.use(User.createStrategy());
 
 // serialize and deserialize the User info
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+//passport.serializeUser(User.serializeUser());
+//passport.deserializeUser(User.deserializeUser());
 
 //let questionsModel = require('../models/questions');
 // add images 
@@ -96,9 +96,9 @@ passport.deserializeUser(User.deserializeUser());
 app.use('/public', express.static('./public'));
 
 // routing
-
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/', indexRouter);
+
 app.use('/survey-list', surveyRouter);
 app.use('/survey-view', questionsRouter);
 app.use('/survey-answer', answerRouter);

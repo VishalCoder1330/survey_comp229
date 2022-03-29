@@ -13,35 +13,35 @@
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
-
+const authentication = require('../../Authentication/token');
 
 
 let questionsController = require('../controllers/questions');
 
 
 /* GET Route for displaying the view page - CREATE Operation */
-router.get('/', questionsController.displayView);
+router.get('/', authentication,questionsController.displayView);
 
 //router.get('/survey/view', questionsController.displayView);
 
 /* GET Route for displaying the create page - CREATE Operation */
-router.get('/create/:id',  questionsController.displayCreatePage);  
+router.get('/create/:id', authentication ,questionsController.displayCreatePage);  
 
 
 /* POST Route for processing the create page - CREATE Operation */
-router.post('/create/:id',  questionsController.processCreatePage);
+router.post('/create/:id', authentication ,questionsController.processCreatePage);
     
 
 /* GET Route for displaying the update page - UPDATE Operation */
-router.get('/update/:id', questionsController.displayUpdatePage);
+router.get('/update/:id', authentication,questionsController.displayUpdatePage);
      
 
 /* POST Route for processing the update page - UPDATE Operation */
-router.post('/update/:id', questionsController.processUpdatePage);
+router.post('/update/:id', authentication,questionsController.processUpdatePage);
  
 //router.get('/view/:id', questionsController.displayNewSurvey);
 
-router.get('/delete/:id', questionsController.performDelete);
+router.get('/delete/:id', authentication,questionsController.performDelete);
 
 
 module.exports = router;
