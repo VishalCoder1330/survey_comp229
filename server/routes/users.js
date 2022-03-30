@@ -22,7 +22,7 @@ router.post('/register',user.registerUser);
 router.post('/login',user.logUser);
 
 /* GET users listing. */
-router.get('/', authentication,function(req, res, next) {
+router.get('/', autheticate,function(req, res, next) {
   res.send('Placeholder');
 });
 
