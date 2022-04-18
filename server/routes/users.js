@@ -21,6 +21,9 @@ router.post('/register',user.registerUser);
 /* User Login Router */
 router.post('/login',user.logUser);
 
+/* User LogOut */
+router.get('/logOut',user.logout);
+
 /* GET users listing. */
 router.get('/', autheticate,function(req, res, next) {
   res.send('Placeholder');

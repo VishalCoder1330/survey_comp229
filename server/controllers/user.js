@@ -35,6 +35,7 @@ exports.registerUser = (req,res,next)=>{
 };
 
 exports.logUser = (req,res,next)=>{
+    console.log("userName",req.body.username);
     User.findOne({username : req.body.username}).exec()
     .then(user=>{
         if (!user) {
@@ -53,7 +54,7 @@ exports.logUser = (req,res,next)=>{
                         }
                     );
                     res.cookie('token',token,{httpOnly:true});
-                    res.status(200).redirect('/home');
+                    res.status(200).redirect('/home?flag='+1);
                 })
                 .catch(err => {
                     console.log(err);
@@ -65,4 +66,9 @@ exports.logUser = (req,res,next)=>{
             error: err
         });
     })
+}
+
+exports.logout = (req,res,next)=>{
+    res.cookie({expires: Date.now()});
+    res.status(401).redirect('/login?flag='+0);
 }

@@ -21,28 +21,46 @@ let userModel = require('../models/user');
 let User = userModel.User; // alias
 
 //controller separation logic to display each page
+const checkLogIn = (req)=>{
+    var flag;
+    console.log('flaf',req.query.flag)
+    if( !req.query.flag ||req.query.flag==0){
+         flag = 0
+    }
+    else{
+        flag = req.query.flag;
+    }
+    return flag;
+}
 
 module.exports.displayHomePage = (req, res, next) => {
-    res.render('index', {title: 'Home', displayName: req.user ? req.user.displayName : ''});
+    var flag = checkLogIn(req);
+    console.log('newFlg',flag);
+    res.render('index', {title: 'Home', displayName: req.user ? req.user.displayName : '',flag:flag});
 }
 
 module.exports.displayAboutPage = (req, res, next) => {
-    res.render('index', {title: 'About', displayName: req.user ? req.user.displayName : ''});
+    var flag = checkLogIn(req);
+    res.render('index', {title: 'About', displayName: req.user ? req.user.displayName : '',flag:flag});
 }
 
 module.exports.displayProjectsPage = (req, res, next) => {
-    res.render('index', {title: 'Projects', displayName: req.user ? req.user.displayName : ''});
+    var flag = checkLogIn(req);
+    res.render('index', {title: 'Projects', displayName: req.user ? req.user.displayName : '',flag:flag});
 }
 
 module.exports.displayServicesPage = (req, res, next) => {
-    res.render('index', {title: 'Services', displayName: req.user ? req.user.displayName : ''});
+    var flag = checkLogIn(req);
+    res.render('index', {title: 'Services', displayName: req.user ? req.user.displayName : '',flag:flag});
 }
 
 module.exports.displayContactPage = (req, res, next) => {
-    res.render('index', {title: 'Contact', displayName: req.user ? req.user.displayName : ''});
+    var flag = checkLogIn(req);
+    res.render('index', {title: 'Contact', displayName: req.user ? req.user.displayName : '',flag:flag});
 }
 
 module.exports.displayLoginPage = (req, res, next) => {
+    var flag = checkLogIn(req);
     // check if the user is already logged in
     if(!req.user)
     {
@@ -50,7 +68,8 @@ module.exports.displayLoginPage = (req, res, next) => {
         {
            title: "Login",
            messages: req.flash('loginMessage'),
-           displayName: req.user ? req.user.displayName : '' 
+           displayName: req.user ? req.user.displayName : '' ,
+           flag:flag
         })
     }
     else
@@ -61,6 +80,7 @@ module.exports.displayLoginPage = (req, res, next) => {
 }
 
 module.exports.processLoginPage = (req, res, next) => {
+    var flag = checkLogIn(req);
     passport.authenticate('local',
     (err, user, info) => {
         // server err?
